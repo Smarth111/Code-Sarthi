@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - CodeMaster Pro</title>
+    <link rel="stylesheet" href="/stylesheets/style.css?v=2.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="/profile" class="nav-link">Profile</a>
+                <a href="#settings" class="nav-link active">Settings</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="20" fill="url(#gradient)"/>
+                            <circle cx="20" cy="16" r="6" fill="white"/>
+                            <path d="M8 32c0-6.627 5.373-12 12-12s12 5.373 12 12" fill="white"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ff88"/>
+                                    <stop offset="100%" style="stop-color:#00cc6a"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="url(#gradient2)"/>
+                                    <circle cx="16" cy="13" r="5" fill="white"/>
+                                    <path d="M6 26c0-5.523 4.477-10 10-10s10 4.477 10 10" fill="white"/>
+                                    <defs>
+                                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#00ff88"/>
+                                            <stop offset="100%" style="stop-color:#00cc6a"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="name">Demo User</div>
+                                <div class="email">demo@example.com</div>
+                            </div>
+                        </div>
+                        <a href="/dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="/profile">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                        <button onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Settings Content -->
+    <section class="settings" id="settings">
+        <div class="container">
+            <div class="settings-header">
+                <h1>Settings</h1>
+                <p>Customize your CodeMaster Pro experience</p>
+            </div>
+
+            <div class="settings-grid">
+                <!-- Appearance Settings -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h2><i class="fas fa-palette"></i> Appearance</h2>
+                        <p>Customize the look and feel of the platform</p>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Theme</label>
+                        <div class="theme-options">
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview dark-theme">
+                                    <i class="fas fa-moon"></i>
+                                </div>
+                                <span>Dark</span>
+                            </div>
+                            <div class="theme-option" data-theme="light">
+                                <div class="theme-preview light-theme">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                                <span>Light</span>
+                            </div>
+                            <div class="theme-option" data-theme="auto">
+                                <div class="theme-preview auto-theme">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <span>Auto</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Accent Color</label>
+                        <div class="color-options">
+                            <div class="color-option active" data-color="primary">
+                                <div class="color-preview" style="background: #00ff88;"></div>
+                                <span>Primary</span>
+                            </div>
+                            <div class="color-option" data-color="secondary">
+                                <div class="color-preview" style="background: #667eea;"></div>
+                                <span>Secondary</span>
+                            </div>
+                            <div class="color-option" data-color="accent">
+                                <div class="color-preview" style="background: #ff6b6b;"></div>
+                                <span>Accent</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Font Size</label>
+                        <div class="font-size-control">
+                            <button class="font-size-btn" data-action="decrease">A-</button>
+                            <span class="font-size-display">16px</span>
+                            <button class="font-size-btn" data-action="increase">A+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h2><i class="fas fa-bell"></i> Notifications</h2>
+                        <p>Manage your notification preferences</p>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Email Notifications</label>
+                        <div class="toggle-group">
+                            <div class="toggle active" data-setting="emailNewProblems">
+                                <span>New problems available</span>
+                            </div>
+                            <div class="toggle active" data-setting="emailContestReminders">
+                                <span>Contest reminders</span>
+                            </div>
+                            <div class="toggle active" data-setting="emailAchievements">
+                                <span>Achievement unlocks</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Push Notifications</label>
+                        <div class="toggle-group">
+                            <div class="toggle active" data-setting="pushDailyReminders">
+                                <span>Daily practice reminders</span>
+                            </div>
+                            <div class="toggle active" data-setting="pushStreakMaintenance">
+                                <span>Streak maintenance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem Preferences -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h2><i class="fas fa-puzzle-piece"></i> Problem Preferences</h2>
+                        <p>Customize your problem-solving experience</p>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Default Difficulty</label>
+                        <select class="setting-select" data-setting="defaultDifficulty">
+                            <option value="all">All Difficulties</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Preferred Categories</label>
+                        <div class="category-checkboxes">
+                            <label class="category-checkbox">
+                                <input type="checkbox" value="arrays" checked>
+                                <span>Arrays & Strings</span>
+                            </label>
+                            <label class="category-checkbox">
+                                <input type="checkbox" value="linkedlists" checked>
+                                <span>Linked Lists</span>
+                            </label>
+                            <label class="category-checkbox">
+                                <input type="checkbox" value="trees" checked>
+                                <span>Trees & Graphs</span>
+                            </label>
+                            <label class="category-checkbox">
+                                <input type="checkbox" value="dp" checked>
+                                <span>Dynamic Programming</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Problems per Session</label>
+                        <div class="range-control">
+                            <input type="range" class="range-slider" min="3" max="10" value="5" data-setting="problemsPerSession">
+                            <span class="range-value">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Editor Settings -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h2><i class="fas fa-code"></i> Code Editor</h2>
+                        <p>Configure your coding environment</p>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Default Language</label>
+                        <select class="setting-select" data-setting="defaultLanguage">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="cpp">C++</option>
+                            <option value="csharp">C#</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Editor Features</label>
+                        <div class="toggle-group">
+                            <div class="toggle active" data-setting="autoCompletion">
+                                <span>Auto-completion</span>
+                            </div>
+                            <div class="toggle active" data-setting="syntaxHighlighting">
+                                <span>Syntax highlighting</span>
+                            </div>
+                            <div class="toggle active" data-setting="lineNumbers">
+                                <span>Line numbers</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Tab Size</label>
+                        <div class="tab-size-control">
+                            <button class="tab-size-btn" data-size="2">2</button>
+                            <button class="tab-size-btn active" data-size="4">4</button>
+                            <button class="tab-size-btn" data-size="8">8</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Privacy & Security -->
+                <div class="settings-card">
+                    <div class="settings-header">
+                        <h2><i class="fas fa-shield-alt"></i> Privacy & Security</h2>
+                        <p>Manage your account security and privacy</p>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Profile Visibility</label>
+                        <select class="setting-select" data-setting="profileVisibility">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="friends">Friends Only</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Activity Sharing</label>
+                        <div class="toggle-group">
+                            <div class="toggle active" data-setting="activitySharing">
+                                <span>Share solving activity</span>
+                            </div>
+                            <div class="toggle active" data-setting="progressUpdates">
+                                <span>Share progress updates</span>
+                            </div>
+                            <div class="toggle" data-setting="dataUsage">
+                                <span>Help improve platform (anonymous)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Language</label>
+                        <select class="setting-select" data-setting="language">
+                            <option value="english">English</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                            <option value="chinese">Chinese</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Time Zone</label>
+                        <select class="setting-select" data-setting="timezone">
+                            <option value="UTC">UTC</option>
+                            <option value="EST">Eastern Time</option>
+                            <option value="PST">Pacific Time</option>
+                            <option value="GMT">GMT</option>
+                            <option value="IST">Indian Standard Time</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Account Actions</label>
+                        <div class="account-actions">
+                            <button class="btn-outline" onclick="exportData()">
+                                <i class="fas fa-download"></i>
+                                Export Data
+                            </button>
+                            <button class="btn-outline" onclick="deleteAccount()">
+                                <i class="fas fa-trash"></i>
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Settings -->
+            <div class="settings-actions">
+                <button class="btn-outline" onclick="resetSettings()">
+                    <i class="fas fa-undo"></i>
+                    Reset to Defaults
+                </button>
+                <button class="btn-primary" onclick="saveSettings()">
+                    <i class="fas fa-save"></i>
+                    Save Settings
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delete Account Modal -->
+    <div class="modal" id="deleteAccountModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Delete Account</h2>
+                <span class="close" id="closeDeleteModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="warning-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>This action cannot be undone!</h3>
+                    <p>Deleting your account will permanently remove all your data, progress, and achievements.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmDelete">Type "DELETE" to confirm</label>
+                    <input type="text" id="confirmDelete" placeholder="DELETE" required>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-outline" onclick="closeDeleteModal()">Cancel</button>
+                    <button class="btn-danger" onclick="confirmDeleteAccount()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        if (!localStorage.getItem('isAuthenticated')) {
+            window.location.href = '/signin';
+        }
+    </script>
+</body>
+</html>

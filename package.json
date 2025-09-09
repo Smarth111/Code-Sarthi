@@ -1,0 +1,15 @@
+{
+  "name": "dsa-platform-backend",
+  "version": "1.0.0",
+  "main": "dsa-platform-backend/bin/www",
+  "scripts": {
+    "start": "cd dsa-platform-backend && npm start",
+    "dev": "cd dsa-platform-backend && npm run dev",
+    "install-deps": "cd dsa-platform-backend && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["dsa", "platform", "backend", "express", "mongodb"],
+  "author": "",
+  "license": "ISC",
+  "description": "DSA Platform Backend - A comprehensive backend for DSA learning platform"
+}

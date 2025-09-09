@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CodeMaster Pro</title>
+    <link rel="stylesheet" href="/stylesheets/style.css?v=2.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#problems" class="nav-link">Problems</a>
+                <a href="#contests" class="nav-link">Contests</a>
+                <a href="#leaderboard" class="nav-link">Leaderboard</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userAvatar">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="20" fill="url(#gradient)"/>
+                            <circle cx="20" cy="16" r="6" fill="white"/>
+                            <path d="M8 32c0-6.627 5.373-12 12-12s12 5.373 12 12" fill="white"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ff88"/>
+                                    <stop offset="100%" style="stop-color:#00cc6a"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="url(#gradient2)"/>
+                                    <circle cx="16" cy="13" r="5" fill="white"/>
+                                    <path d="M6 26c0-5.523 4.477-10 10-10s10 4.477 10 10" fill="white"/>
+                                    <defs>
+                                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#00ff88"/>
+                                            <stop offset="100%" style="stop-color:#00cc6a"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="name" id="userName">User</div>
+                                <div class="email">user@example.com</div>
+                            </div>
+                        </div>
+                        <a href="/profile">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                        <a href="/settings">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <button id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard" id="dashboard">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h1>Welcome back, <span id="userName">User</span>! 👋</h1>
+                <p>Ready to conquer more algorithms today?</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="userPoints">0</h3>
+                        <p>Total Points</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="problemsSolved">0</h3>
+                        <p>Problems Solved</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="streak">0</h3>
+                        <p>Day Streak</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="rank">#--</h3>
+                        <p>Global Rank</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem Categories -->
+            <div class="categories-section" id="problems">
+                <h2 class="section-title">Choose Your Challenge</h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="arrays">
+                        <div class="category-header">
+                            <i class="fas fa-list-ol"></i>
+                            <h3>Arrays & Strings</h3>
+                        </div>
+                        <div class="category-stats">
+                            <span>150 Problems</span>
+                            <span>Easy: 50 | Medium: 70 | Hard: 30</span>
+                        </div>
+                        <div class="category-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                        <button class="btn-primary btn-full">Start Practicing</button>
+                    </div>
+                    
+                    <div class="category-card" data-category="linkedlists">
+                        <div class="category-header">
+                            <i class="fas fa-sitemap"></i>
+                            <h3>Linked Lists</h3>
+                        </div>
+                        <div class="category-stats">
+                            <span>80 Problems</span>
+                            <span>Easy: 25 | Medium: 40 | Hard: 15</span>
+                        </div>
+                        <div class="category-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                        <button class="btn-primary btn-full">Start Practicing</button>
+                    </div>
+                    
+                    <div class="category-card" data-category="trees">
+                        <div class="category-header">
+                            <i class="fas fa-tree"></i>
+                            <h3>Trees & Graphs</h3>
+                        </div>
+                        <div class="category-stats">
+                            <span>120 Problems</span>
+                            <span>Easy: 30 | Medium: 60 | Hard: 30</span>
+                        </div>
+                        <div class="category-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                        <button class="btn-primary btn-full">Start Practicing</button>
+                    </div>
+                    
+                    <div class="category-card" data-category="dp">
+                        <div class="category-header">
+                            <i class="fas fa-brain"></i>
+                            <h3>Dynamic Programming</h3>
+                        </div>
+                        <div class="category-stats">
+                            <span>100 Problems</span>
+                            <span>Easy: 20 | Medium: 50 | Hard: 30</span>
+                        </div>
+                        <div class="category-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                        <button class="btn-primary btn-full">Start Practicing</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <h2 class="section-title">Recent Activity</h2>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Welcome to CodeMaster Pro! Start solving problems to see your activity here.</p>
+                            <span class="activity-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="startRandomProblem()">
+                        <i class="fas fa-random"></i>
+                        <span>Random Problem</span>
+                    </button>
+                    <button class="action-btn" onclick="viewLeaderboard()">
+                        <i class="fas fa-trophy"></i>
+                        <span>View Leaderboard</span>
+                    </button>
+                    <button class="action-btn" onclick="joinContest()">
+                        <i class="fas fa-gamepad"></i>
+                        <span>Join Contest</span>
+                    </button>
+                    <button class="action-btn" onclick="viewProfile()">
+                        <i class="fas fa-user"></i>
+                        <span>View Profile</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Modal -->
+    <div class="modal" id="problemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="problemTitle">Problem Title</h2>
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="category-progress-bar" style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Category Progress</span>
+                        <span style="color: var(--primary); font-weight: 600;" id="progressText">0/5</span>
+                    </div>
+                    <div style="width: 100%; height: 8px; background: var(--bg-tertiary); border-radius: 4px; overflow: hidden;">
+                        <div style="height: 100%; background: var(--gradient-primary); border-radius: 4px; transition: width 0.8s ease-out;" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <div class="problem-description" id="problemDescription">
+                    <!-- Problem description will be loaded here -->
+                </div>
+                
+                <div class="code-editor-section">
+                    <h3>Your Solution</h3>
+                    <div class="language-selector">
+                        <select id="languageSelect">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="cpp">C++</option>
+                        </select>
+                    </div>
+                    <textarea id="codeEditor" placeholder="Write your solution here..."></textarea>
+                    <div class="editor-actions">
+                        <button class="btn-primary" onclick="runCode()">
+                            <i class="fas fa-play"></i>
+                            Run Code
+                        </button>
+                        <button class="btn-secondary" onclick="submitSolution()">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Solution
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="test-results" id="testResults" style="display: none;">
+                    <!-- Test results will be shown here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        if (!localStorage.getItem('isAuthenticated')) {
+            window.location.href = '/signin';
+        }
+
+        // Load user data
+        const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+        
+        // Update UI with user data
+        document.getElementById('userName').textContent = userData.name || 'User';
+        document.getElementById('userPoints').textContent = userData.points || 0;
+        document.getElementById('problemsSolved').textContent = userData.problemsSolved || 0;
+        document.getElementById('streak').textContent = userData.streak || 0;
+        document.getElementById('rank').textContent = userData.rank || '#--';
+        
+        // Update progress bars based on localStorage
+        updateProgressBars();
+        
+        // Category card click handlers
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.querySelector('button').addEventListener('click', function() {
+                const category = card.dataset.category;
+                startCategoryProblems(category);
+            });
+        });
+        
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('userData');
+            localStorage.removeItem('isAuthenticated');
+            window.location.href = '/';
+        });
+        
+        // Modal functionality
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('problemModal').style.display = 'none';
+        });
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('problemModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        function updateProgressBars() {
+            const progressData = JSON.parse(localStorage.getItem('progressData') || '{}');
+            
+            document.querySelectorAll('.category-card').forEach(card => {
+                const category = card.dataset.category;
+                const progress = progressData[category] || 0;
+                const progressFill = card.querySelector('.progress-fill');
+                const progressText = card.querySelector('.category-progress span');
+                
+                progressFill.style.width = progress + '%';
+                progressText.textContent = progress + '% Complete';
+            });
+        }
+        
+        function startCategoryProblems(category) {
+            const problems = getProblemsByCategory(category);
+            if (problems.length > 0) {
+                // Get only 5 questions for this category
+                const categoryProblems = problems.slice(0, 5);
+                localStorage.setItem('currentCategoryProblems', JSON.stringify(categoryProblems));
+                localStorage.setItem('currentProblemIndex', '0');
+                showProblem(categoryProblems[0]);
+            }
+        }
+        
+        function getProblemsByCategory(category) {
+            const allProblems = JSON.parse(localStorage.getItem('allProblems') || '[]');
+            return allProblems.filter(p => p.category === category);
+        }
+        
+        function showProblem(problem) {
+            const currentProblems = JSON.parse(localStorage.getItem('currentCategoryProblems') || '[]');
+            const currentIndex = parseInt(localStorage.getItem('currentProblemIndex') || '0');
+            const totalQuestions = currentProblems.length;
+            
+            // Update progress bar
+            const progressText = document.getElementById('progressText');
+            const progressFill = document.getElementById('progressFill');
+            if (progressText && progressFill) {
+                progressText.textContent = `${currentIndex + 1}/${totalQuestions}`;
+                const progressPercentage = ((currentIndex + 1) / totalQuestions) * 100;
+                progressFill.style.width = progressPercentage + '%';
+            }
+            
+            document.getElementById('problemTitle').textContent = problem.title;
+            document.getElementById('problemDescription').innerHTML = `
+                <div class="problem-info">
+                    <span class="difficulty ${problem.difficulty}">${problem.difficulty.toUpperCase()}</span>
+                    <span class="points">${problem.points} points</span>
+                    <div class="question-progress" style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                        Question ${currentIndex + 1} of ${totalQuestions} in ${getCategoryDisplayName(problem.category)}
+                    </div>
+                </div>
+                <div class="problem-text">
+                    ${problem.description}
+                </div>
+                <div class="problem-examples">
+                    <h4>Examples:</h4>
+                    ${problem.examples.map(ex => `
+                        <div class="example">
+                            <strong>Input:</strong> ${ex.input}<br>
+                            <strong>Output:</strong> ${ex.output}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Clear previous code and results
+            document.getElementById('codeEditor').value = '';
+            document.getElementById('testResults').style.display = 'none';
+            
+            // Store current problem
+            localStorage.setItem('currentProblem', JSON.stringify(problem));
+            
+            document.getElementById('problemModal').style.display = 'block';
+        }
+        
+        function getCategoryDisplayName(category) {
+            const categoryNames = {
+                'arrays': 'Arrays & Strings',
+                'linkedlists': 'Linked Lists',
+                'trees': 'Trees & Graphs',
+                'dp': 'Dynamic Programming'
+            };
+            return categoryNames[category] || category;
+        }
+        
+        function runCode() {
+            const code = document.getElementById('codeEditor').value;
+            const language = document.getElementById('languageSelect').value;
+            const currentProblem = JSON.parse(localStorage.getItem('currentProblem') || '{}');
+            
+            if (!code.trim()) {
+                showNotification('Please write some code first!', 'error');
+                return;
+            }
+            
+            // Simulate terminal-like code execution
+            const testResults = document.getElementById('testResults');
+            testResults.style.display = 'block';
+            
+            // Simulate processing time
+            testResults.innerHTML = `
+                <div style="font-family: monospace; background: #1a1a1a; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <div style="color: #00ff88;">$ Running tests...</div>
+                    <div style="color: #ffffff;">$ Compiling ${language} code...</div>
+                    <div style="color: #ffffff;">$ Executing test cases...</div>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                // Simulate test results
+                const results = simulateCodeExecution(code, currentProblem, language);
+                testResults.innerHTML = `
+                    <div style="font-family: monospace; background: #1a1a1a; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="color: #00ff88;">$ Running tests...</div>
+                        <div style="color: #ffffff;">$ Compiling ${language} code...</div>
+                        <div style="color: #ffffff;">$ Executing test cases...</div>
+                    </div>
+                    <h4>Test Results:</h4>
+                    ${results.map((result, index) => `
+                        <div class="test-result ${result.passed ? 'success' : 'error'}">
+                            <i class="fas fa-${result.passed ? 'check-circle' : 'times-circle'}"></i>
+                            Test case ${index + 1}: ${result.passed ? 'Passed ✓' : 'Failed ✗'}
+                            ${!result.passed ? `<br><small>Expected: ${result.expected}, Got: ${result.actual}</small>` : ''}
+                        </div>
+                    `).join('')}
+                    <div class="test-summary">
+                        ${results.every(r => r.passed) ? 
+                            '🎉 All test cases passed! Your solution is correct!' : 
+                            '❌ Some test cases failed. Please check your solution.'}
+                    </div>
+                `;
+            }, 1500);
+        }
+        
+        function simulateCodeExecution(code, problem, language) {
+            // This simulates a terminal-like code execution
+            // In a real system, this would send code to a backend for execution
+            
+            const results = [];
+            const testCases = problem.testCases || [];
+            
+            // Simulate different success rates based on code quality
+            const codeQuality = Math.random();
+            const allPassed = codeQuality > 0.3; // 70% chance of all tests passing
+            
+            testCases.forEach((testCase, index) => {
+                let passed = allPassed;
+                
+                // Add some randomness to make it more realistic
+                if (index === 0 && codeQuality < 0.5) passed = false;
+                if (index === 1 && codeQuality < 0.7) passed = false;
+                
+                results.push({
+                    passed: passed,
+                    expected: testCase.output,
+                    actual: passed ? testCase.output : generateWrongOutput(testCase.output)
+                });
+            });
+            
+            return results;
+        }
+        
+        function generateWrongOutput(expected) {
+            // Generate plausible wrong outputs for failed tests
+            const wrongOutputs = {
+                'true': 'false',
+                'false': 'true',
+                '0': '1',
+                '1': '0',
+                '[]': '[0]',
+                '[0]': '[]'
+            };
+            
+            return wrongOutputs[expected] || 'undefined';
+        }
+        
+        function submitSolution() {
+            const currentProblem = JSON.parse(localStorage.getItem('currentProblem') || '{}');
+            const testResults = document.getElementById('testResults');
+            
+            // Check if tests were run and passed
+            if (testResults.style.display === 'none') {
+                showNotification('Please run your code first to test it!', 'error');
+                return;
+            }
+            
+            const allPassed = testResults.querySelectorAll('.test-result.success').length === 
+                             testResults.querySelectorAll('.test-result').length;
+            
+            if (!allPassed) {
+                showNotification('Please fix your solution before submitting!', 'error');
+                return;
+            }
+            
+            // Update progress and move to next question
+            updateUserProgress(currentProblem);
+            showNotification(`Solution submitted successfully! +${currentProblem.points} points`, 'success');
+            
+            // Move to next question in the category
+            moveToNextQuestion();
+        }
+        
+        function moveToNextQuestion() {
+            const currentProblems = JSON.parse(localStorage.getItem('currentCategoryProblems') || '[]');
+            const currentIndex = parseInt(localStorage.getItem('currentProblemIndex') || '0');
+            
+            if (currentIndex < currentProblems.length - 1) {
+                // Move to next question
+                const nextIndex = currentIndex + 1;
+                localStorage.setItem('currentProblemIndex', nextIndex.toString());
+                showProblem(currentProblems[nextIndex]);
+            } else {
+                // Category completed
+                document.getElementById('problemModal').style.display = 'none';
+                showNotification('🎉 Category completed! Great job!', 'success');
+                
+                // Update category progress
+                updateCategoryProgress();
+            }
+        }
+        
+        function updateCategoryProgress() {
+            const progressData = JSON.parse(localStorage.getItem('progressData') || '{}');
+            const currentProblem = JSON.parse(localStorage.getItem('currentProblem') || '{}');
+            const category = currentProblem.category;
+            
+            // Mark category as completed (100%)
+            progressData[category] = 100;
+            localStorage.setItem('progressData', JSON.stringify(progressData));
+            
+            // Update UI
+            updateProgressBars();
+        }
+        
+        function getCurrentProblem() {
+            return JSON.parse(localStorage.getItem('currentProblem') || '{}');
+        }
+        
+        function updateUserProgress(problem) {
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            const progressData = JSON.parse(localStorage.getItem('progressData') || '{}');
+            
+            // Update points
+            userData.points = (userData.points || 0) + problem.points;
+            userData.problemsSolved = (userData.problemsSolved || 0) + 1;
+            
+            // Update progress
+            const category = problem.category;
+            const currentProgress = progressData[category] || 0;
+            progressData[category] = Math.min(100, currentProgress + 5); // 5% per problem
+            
+            // Save to localStorage
+            localStorage.setItem('userData', JSON.stringify(userData));
+            localStorage.setItem('progressData', JSON.stringify(progressData));
+            
+            // Update UI
+            updateProgressBars();
+            document.getElementById('userPoints').textContent = userData.points;
+            document.getElementById('problemsSolved').textContent = userData.problemsSolved;
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            switch(type) {
+                case 'success':
+                    notification.style.background = '#00ff88';
+                    break;
+                case 'error':
+                    notification.style.background = '#ff5252';
+                    break;
+                default:
+                    notification.style.background = '#29b6f6';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Quick action functions
+        function startRandomProblem() {
+            showNotification('Starting random problem...', 'info');
+        }
+        
+        function viewLeaderboard() {
+            showNotification('Opening leaderboard...', 'info');
+        }
+        
+        function joinContest() {
+            showNotification('Joining contest...', 'info');
+        }
+        
+        function viewProfile() {
+            window.location.href = '/profile';
+        }
+        
+        // Initialize problems if not exists
+        if (!localStorage.getItem('allProblems')) {
+            initializeProblems();
+        }
+        
+        function initializeProblems() {
+            const problems = [
+                // Arrays & Strings Problems (5 questions)
+                {
+                    id: 1,
+                    title: "Two Sum",
+                    category: "arrays",
+                    difficulty: "easy",
+                    points: 10,
+                    description: "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
+                    examples: [
+                        { input: "nums = [2,7,11,15], target = 9", output: "[0,1]" },
+                        { input: "nums = [3,2,4], target = 6", output: "[1,2]" },
+                        { input: "nums = [3,3], target = 6", output: "[0,1]" }
+                    ],
+                    testCases: [
+                        { input: "[2,7,11,15]", target: 9, output: "[0,1]" },
+                        { input: "[3,2,4]", target: 6, output: "[1,2]" },
+                        { input: "[3,3]", target: 6, output: "[0,1]" }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "Valid Parentheses",
+                    category: "arrays",
+                    difficulty: "easy",
+                    points: 15,
+                    description: "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets. Open brackets must be closed in the correct order.",
+                    examples: [
+                        { input: "s = '()'", output: "true" },
+                        { input: "s = '()[]{}'", output: "true" },
+                        { input: "s = '(]'", output: "false" }
+                    ],
+                    testCases: [
+                        { input: "()", output: "true" },
+                        { input: "()[]{}", output: "true" },
+                        { input: "(]", output: "false" }
+                    ]
+                },
+                {
+                    id: 3,
+                    title: "Maximum Subarray",
+                    category: "arrays",
+                    difficulty: "medium",
+                    points: 20,
+                    description: "Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.",
+                    examples: [
+                        { input: "nums = [-2,1,-3,4,-1,2,1,-5,4]", output: "6" },
+                        { input: "nums = [1]", output: "1" },
+                        { input: "nums = [5,4,-1,7,8]", output: "23" }
+                    ],
+                    testCases: [
+                        { input: "[-2,1,-3,4,-1,2,1,-5,4]", output: "6" },
+                        { input: "[1]", output: "1" },
+                        { input: "[5,4,-1,7,8]", output: "23" }
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "Longest Substring Without Repeating Characters",
+                    category: "arrays",
+                    difficulty: "medium",
+                    points: 25,
+                    description: "Given a string s, find the length of the longest substring without repeating characters.",
+                    examples: [
+                        { input: "s = 'abcabcbb'", output: "3" },
+                        { input: "s = 'bbbbb'", output: "1" },
+                        { input: "s = 'pwwkew'", output: "3" }
+                    ],
+                    testCases: [
+                        { input: "abcabcbb", output: "3" },
+                        { input: "bbbbb", output: "1" },
+                        { input: "pwwkew", output: "3" }
+                    ]
+                },
+                {
+                    id: 5,
+                    title: "Container With Most Water",
+                    category: "arrays",
+                    difficulty: "hard",
+                    points: 30,
+                    description: "Given n non-negative integers height where each represents a point at coordinate (i, height[i]), find two lines that together with the x-axis form a container that would hold the maximum amount of water.",
+                    examples: [
+                        { input: "height = [1,8,6,2,5,4,8,3,7]", output: "49" },
+                        { input: "height = [1,1]", output: "1" }
+                    ],
+                    testCases: [
+                        { input: "[1,8,6,2,5,4,8,3,7]", output: "49" },
+                        { input: "[1,1]", output: "1" }
+                    ]
+                },
+
+                // Linked Lists Problems (5 questions)
+                {
+                    id: 6,
+                    title: "Reverse Linked List",
+                    category: "linkedlists",
+                    difficulty: "easy",
+                    points: 15,
+                    description: "Given the head of a singly linked list, reverse the list, and return the reversed list.",
+                    examples: [
+                        { input: "head = [1,2,3,4,5]", output: "[5,4,3,2,1]" },
+                        { input: "head = [1,2]", output: "[2,1]" },
+                        { input: "head = []", output: "[]" }
+                    ],
+                    testCases: [
+                        { input: "[1,2,3,4,5]", output: "[5,4,3,2,1]" },
+                        { input: "[1,2]", output: "[2,1]" },
+                        { input: "[]", output: "[]" }
+                    ]
+                },
+                {
+                    id: 7,
+                    title: "Detect Cycle in Linked List",
+                    category: "linkedlists",
+                    difficulty: "medium",
+                    points: 20,
+                    description: "Given head, the head of a linked list, determine if the linked list has a cycle in it. There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer.",
+                    examples: [
+                        { input: "head = [3,2,0,-4], pos = 1", output: "true" },
+                        { input: "head = [1,2], pos = 0", output: "true" },
+                        { input: "head = [1], pos = -1", output: "false" }
+                    ],
+                    testCases: [
+                        { input: "[3,2,0,-4]", output: "true" },
+                        { input: "[1,2]", output: "true" },
+                        { input: "[1]", output: "false" }
+                    ]
+                },
+                {
+                    id: 8,
+                    title: "Merge Two Sorted Lists",
+                    category: "linkedlists",
+                    difficulty: "easy",
+                    points: 15,
+                    description: "Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together the nodes of the first two lists.",
+                    examples: [
+                        { input: "l1 = [1,2,4], l2 = [1,3,4]", output: "[1,1,2,3,4,4]" },
+                        { input: "l1 = [], l2 = []", output: "[]" },
+                        { input: "l1 = [], l2 = [0]", output: "[0]" }
+                    ],
+                    testCases: [
+                        { input: "[1,2,4] [1,3,4]", output: "[1,1,2,3,4,4]" },
+                        { input: "[] []", output: "[]" },
+                        { input: "[] [0]", output: "[0]" }
+                    ]
+                },
+                {
+                    id: 9,
+                    title: "Remove Nth Node From End of List",
+                    category: "linkedlists",
+                    difficulty: "medium",
+                    points: 20,
+                    description: "Given the head of a linked list, remove the nth node from the end of the list and return its head.",
+                    examples: [
+                        { input: "head = [1,2,3,4,5], n = 2", output: "[1,2,3,5]" },
+                        { input: "head = [1], n = 1", output: "[]" },
+                        { input: "head = [1,2], n = 1", output: "[1]" }
+                    ],
+                    testCases: [
+                        { input: "[1,2,3,4,5] 2", output: "[1,2,3,5]" },
+                        { input: "[1] 1", output: "[]" },
+                        { input: "[1,2] 1", output: "[1]" }
+                    ]
+                },
+                {
+                    id: 10,
+                    title: "Add Two Numbers",
+                    category: "linkedlists",
+                    difficulty: "medium",
+                    points: 25,
+                    description: "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.",
+                    examples: [
+                        { input: "l1 = [2,4,3], l2 = [5,6,4]", output: "[7,0,8]" },
+                        { input: "l1 = [0], l2 = [0]", output: "[0]" },
+                        { input: "l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]", output: "[8,9,9,9,0,0,0,1]" }
+                    ],
+                    testCases: [
+                        { input: "[2,4,3] [5,6,4]", output: "[7,0,8]" },
+                        { input: "[0] [0]", output: "[0]" },
+                        { input: "[9,9,9,9,9,9,9] [9,9,9,9]", output: "[8,9,9,9,0,0,0,1]" }
+                    ]
+                },
+
+                // Trees & Graphs Problems (5 questions)
+                {
+                    id: 11,
+                    title: "Maximum Depth of Binary Tree",
+                    category: "trees",
+                    difficulty: "easy",
+                    points: 15,
+                    description: "Given the root of a binary tree, return its maximum depth. A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.",
+                    examples: [
+                        { input: "root = [3,9,20,null,null,15,7]", output: "3" },
+                        { input: "root = [1,null,2]", output: "2" }
+                    ],
+                    testCases: [
+                        { input: "[3,9,20,null,null,15,7]", output: "3" },
+                        { input: "[1,null,2]", output: "2" }
+                    ]
+                },
+                {
+                    id: 12,
+                    title: "Validate Binary Search Tree",
+                    category: "trees",
+                    difficulty: "medium",
+                    points: 20,
+                    description: "Given the root of a binary tree, determine if it is a valid binary search tree (BST). A valid BST is defined as follows: The left subtree of a node contains only nodes with keys less than the node's key. The right subtree of a node contains only nodes with keys greater than the node's key.",
+                    examples: [
+                        { input: "root = [2,1,3]", output: "true" },
+                        { input: "root = [5,1,4,null,null,3,6]", output: "false" }
+                    ],
+                    testCases: [
+                        { input: "[2,1,3]", output: "true" },
+                        { input: "[5,1,4,null,null,3,6]", output: "false" }
+                    ]
+                },
+                {
+                    id: 13,
+                    title: "Number of Islands",
+                    category: "trees",
+                    difficulty: "medium",
+                    points: 25,
+                    description: "Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.",
+                    examples: [
+                        { input: "grid = [['1','1','1','1','0'],['1','1','0','1','0'],['1','1','0','0','0'],['0','0','0','0','0']]", output: "1" },
+                        { input: "grid = [['1','1','0','0','0'],['1','1','0','0','0'],['0','0','1','0','0'],['0','0','0','1','1']]", output: "3" }
+                    ],
+                    testCases: [
+                        { input: "[['1','1','1','1','0'],['1','1','0','1','0'],['1','1','0','0','0'],['0','0','0','0','0']]", output: "1" },
+                        { input: "[['1','1','0','0','0'],['1','1','0','0','0'],['0','0','1','0','0'],['0','0','0','1','1']]", output: "3" }
+                    ]
+                },
+                {
+                    id: 14,
+                    title: "Course Schedule",
+                    category: "trees",
+                    difficulty: "medium",
+                    points: 25,
+                    description: "There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.",
+                    examples: [
+                        { input: "numCourses = 2, prerequisites = [[1,0]]", output: "true" },
+                        { input: "numCourses = 2, prerequisites = [[1,0],[0,1]]", output: "false" }
+                    ],
+                    testCases: [
+                        { input: "2 [[1,0]]", output: "true" },
+                        { input: "2 [[1,0],[0,1]]", output: "false" }
+                    ]
+                },
+                {
+                    id: 15,
+                    title: "Word Ladder",
+                    category: "trees",
+                    difficulty: "hard",
+                    points: 30,
+                    description: "A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that: Every adjacent pair of words differs by a single letter.",
+                    examples: [
+                        { input: "beginWord = 'hit', endWord = 'cog', wordList = ['hot','dot','dog','lot','log','cog']", output: "5" },
+                        { input: "beginWord = 'hit', endWord = 'cog', wordList = ['hot','dot','dog','lot','log']", output: "0" }
+                    ],
+                    testCases: [
+                        { input: "hit cog ['hot','dot','dog','lot','log','cog']", output: "5" },
+                        { input: "hit cog ['hot','dot','dog','lot','log']", output: "0" }
+                    ]
+                },
+
+                // Dynamic Programming Problems (5 questions)
+                {
+                    id: 16,
+                    title: "Climbing Stairs",
+                    category: "dp",
+                    difficulty: "easy",
+                    points: 15,
+                    description: "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+                    examples: [
+                        { input: "n = 2", output: "2" },
+                        { input: "n = 3", output: "3" },
+                        { input: "n = 4", output: "5" }
+                    ],
+                    testCases: [
+                        { input: "2", output: "2" },
+                        { input: "3", output: "3" },
+                        { input: "4", output: "5" }
+                    ]
+                },
+                {
+                    id: 17,
+                    title: "Fibonacci Number",
+                    category: "dp",
+                    difficulty: "easy",
+                    points: 10,
+                    description: "The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1.",
+                    examples: [
+                        { input: "n = 2", output: "1" },
+                        { input: "n = 3", output: "2" },
+                        { input: "n = 4", output: "3" }
+                    ],
+                    testCases: [
+                        { input: "2", output: "1" },
+                        { input: "3", output: "2" },
+                        { input: "4", output: "3" }
+                    ]
+                },
+                {
+                    id: 18,
+                    title: "Longest Common Subsequence",
+                    category: "dp",
+                    difficulty: "medium",
+                    points: 25,
+                    description: "Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.",
+                    examples: [
+                        { input: "text1 = 'abcde', text2 = 'ace'", output: "3" },
+                        { input: "text1 = 'abc', text2 = 'abc'", output: "3" },
+                        { input: "text1 = 'abc', text2 = 'def'", output: "0" }
+                    ],
+                    testCases: [
+                        { input: "abcde ace", output: "3" },
+                        { input: "abc abc", output: "3" },
+                        { input: "abc def", output: "0" }
+                    ]
+                },
+                {
+                    id: 19,
+                    title: "Coin Change",
+                    category: "dp",
+                    difficulty: "medium",
+                    points: 25,
+                    description: "You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money. Return the fewest number of coins that you need to make up that amount.",
+                    examples: [
+                        { input: "coins = [1,2,5], amount = 11", output: "3" },
+                        { input: "coins = [2], amount = 3", output: "-1" },
+                        { input: "coins = [1], amount = 0", output: "0" }
+                    ],
+                    testCases: [
+                        { input: "[1,2,5] 11", output: "3" },
+                        { input: "[2] 3", output: "-1" },
+                        { input: "[1] 0", output: "0" }
+                    ]
+                },
+                {
+                    id: 20,
+                    title: "Edit Distance",
+                    category: "dp",
+                    difficulty: "hard",
+                    points: 30,
+                    description: "Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word: Insert a character, Delete a character, Replace a character.",
+                    examples: [
+                        { input: "word1 = 'horse', word2 = 'ros'", output: "3" },
+                        { input: "word1 = 'intention', word2 = 'execution'", output: "5" }
+                    ],
+                    testCases: [
+                        { input: "horse ros", output: "3" },
+                        { input: "intention execution", output: "5" }
+                    ]
+                }
+            ];
+            
+            localStorage.setItem('allProblems', JSON.stringify(problems));
+        }
+    </script>
+</body>
+</html>

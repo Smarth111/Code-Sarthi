@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - CodeMaster Pro</title>
+    <link rel="stylesheet" href="/stylesheets/style.css?v=2.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+                <a href="#profile" class="nav-link active">Profile</a>
+                <a href="/settings" class="nav-link">Settings</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <img src="https://via.placeholder.com/40" alt="User" class="user-avatar" id="userAvatar">
+                    <div class="user-dropdown">
+                        <a href="/profile">Profile</a>
+                        <a href="/settings">Settings</a>
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <section class="profile" id="profile">
+        <div class="container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <div id="profileAvatar">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="60" fill="url(#gradient)"/>
+                            <circle cx="60" cy="48" r="18" fill="white"/>
+                            <path d="M24 96c0-19.882 16.118-36 36-36s36 16.118 36 36" fill="white"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ff88"/>
+                                    <stop offset="100%" style="stop-color:#00cc6a"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <button class="edit-avatar-btn" onclick="editAvatar()">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="profile-info">
+                    <h1 id="profileName">User Name</h1>
+                    <p id="profileEmail">user@email.com</p>
+                    <div class="profile-stats">
+                        <span class="stat">
+                            <i class="fas fa-trophy"></i>
+                            <strong id="profilePoints">0</strong> Points
+                        </span>
+                        <span class="stat">
+                            <i class="fas fa-check-circle"></i>
+                            <strong id="profileSolved">0</strong> Solved
+                        </span>
+                        <span class="stat">
+                            <i class="fas fa-fire"></i>
+                            <strong id="profileStreak">0</strong> Day Streak
+                        </span>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-primary" onclick="editProfile()">
+                            <i class="fas fa-edit"></i>
+                            Edit Profile
+                        </button>
+                        <button class="btn-outline" onclick="shareProfile()">
+                            <i class="fas fa-share"></i>
+                            Share Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Stats -->
+            <div class="profile-stats-section">
+                <h2 class="section-title">Your Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="joinDate">--</h3>
+                            <p>Days Active</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="lastActive">--</h3>
+                            <p>Last Active</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="rank">#--</h3>
+                            <p>Global Rank</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="achievements">0</h3>
+                            <p>Achievements</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress by Category -->
+            <div class="progress-section">
+                <h2 class="section-title">Progress by Category</h2>
+                <div class="progress-grid">
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3>Arrays & Strings</h3>
+                            <span class="progress-percentage" id="arraysProgress">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="arraysFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-details">
+                            <span>Easy: <span id="arraysEasy">0</span>/50</span>
+                            <span>Medium: <span id="arraysMedium">0</span>/70</span>
+                            <span>Hard: <span id="arraysHard">0</span>/30</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3>Linked Lists</h3>
+                            <span class="progress-percentage" id="linkedListsProgress">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="linkedListsFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-details">
+                            <span>Easy: <span id="linkedListsEasy">0</span>/25</span>
+                            <span>Medium: <span id="linkedListsMedium">0</span>/40</span>
+                            <span>Hard: <span id="linkedListsHard">0</span>/15</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3>Trees & Graphs</h3>
+                            <span class="progress-percentage" id="treesProgress">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="treesFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-details">
+                            <span>Easy: <span id="treesEasy">0</span>/30</span>
+                            <span>Medium: <span id="treesMedium">0</span>/60</span>
+                            <span>Hard: <span id="treesHard">0</span>/30</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3>Dynamic Programming</h3>
+                            <span class="progress-percentage" id="dpProgress">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="dpFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-details">
+                            <span>Easy: <span id="dpEasy">0</span>/20</span>
+                            <span>Medium: <span id="dpMedium">0</span>/50</span>
+                            <span>Hard: <span id="dpHard">0</span>/30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-section">
+                <h2 class="section-title">Recent Activity</h2>
+                <div class="activity-timeline" id="activityTimeline">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Joined CodeMaster Pro</h4>
+                            <p>Welcome to the platform! Start solving problems to see your activity here.</p>
+                            <span class="activity-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="achievements-section">
+                <h2 class="section-title">Achievements</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>First Problem</h3>
+                        <p>Solve your first DSA problem</p>
+                        <div class="achievement-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Streak Master</h3>
+                        <p>Maintain a 7-day solving streak</p>
+                        <div class="achievement-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/7</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-card locked">
+                        <div class="achievement-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Algorithm Expert</h3>
+                        <p>Solve 50 problems across all categories</p>
+                        <div class="achievement-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0/50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <span class="close" id="closeEditModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editProfileForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editFirstName">First Name</label>
+                            <input type="text" id="editFirstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editLastName">Last Name</label>
+                            <input type="text" id="editLastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editUsername">Username</label>
+                        <input type="text" id="editUsername" name="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editBio">Bio</label>
+                        <textarea id="editBio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="closeEditModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        if (!localStorage.getItem('isAuthenticated')) {
+            window.location.href = '/signin';
+        }
+
+        // Load user data
+        const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+        const progressData = JSON.parse(localStorage.getItem('progressData') || '{}');
+        
+        // Update profile with user data
+        updateProfile();
+        updateProgress();
+        updateAchievements();
+        
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('userData');
+            localStorage.removeItem('isAuthenticated');
+            localStorage.removeItem('progressData');
+            window.location.href = '/';
+        });
+        
+        // Modal functionality
+        document.getElementById('closeEditModal').addEventListener('click', function() {
+            document.getElementById('editProfileModal').style.display = 'none';
+        });
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('editProfileModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        function updateProfile() {
+            document.getElementById('profileName').textContent = userData.name || 'User Name';
+            document.getElementById('profileEmail').textContent = userData.email || 'user@email.com';
+            document.getElementById('profilePoints').textContent = userData.points || 0;
+            document.getElementById('profileSolved').textContent = userData.problemsSolved || 0;
+            document.getElementById('profileStreak').textContent = userData.streak || 0;
+            
+            // Calculate days active
+            if (userData.joinDate) {
+                const joinDate = new Date(userData.joinDate);
+                const today = new Date();
+                const daysActive = Math.ceil((today - joinDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('joinDate').textContent = daysActive;
+            }
+            
+            // Last active
+            if (userData.lastLogin) {
+                const lastLogin = new Date(userData.lastLogin);
+                const now = new Date();
+                const diffHours = Math.floor((now - lastLogin) / (1000 * 60 * 60));
+                
+                if (diffHours < 1) {
+                    document.getElementById('lastActive').textContent = 'Just now';
+                } else if (diffHours < 24) {
+                    document.getElementById('lastActive').textContent = `${diffHours}h ago`;
+                } else {
+                    const diffDays = Math.floor(diffHours / 24);
+                    document.getElementById('lastActive').textContent = `${diffDays}d ago`;
+                }
+            }
+        }
+        
+        function updateProgress() {
+            const categories = ['arrays', 'linkedlists', 'trees', 'dp'];
+            
+            categories.forEach(category => {
+                const progress = progressData[category] || 0;
+                const progressElement = document.getElementById(`${category}Progress`);
+                const fillElement = document.getElementById(`${category}Fill`);
+                
+                if (progressElement && fillElement) {
+                    progressElement.textContent = `${progress}%`;
+                    fillElement.style.width = `${progress}%`;
+                }
+                
+                // Update problem counts (simplified)
+                const easyElement = document.getElementById(`${category}Easy`);
+                const mediumElement = document.getElementById(`${category}Medium`);
+                const hardElement = document.getElementById(`${category}Hard`);
+                
+                if (easyElement) easyElement.textContent = Math.floor(progress / 10);
+                if (mediumElement) mediumElement.textContent = Math.floor(progress / 5);
+                if (hardElement) hardElement.textContent = Math.floor(progress / 15);
+            });
+        }
+        
+        function updateAchievements() {
+            const problemsSolved = userData.problemsSolved || 0;
+            const streak = userData.streak || 0;
+            
+            // First Problem achievement
+            if (problemsSolved >= 1) {
+                unlockAchievement('First Problem', 0);
+            }
+            
+            // Streak Master achievement
+            if (streak >= 7) {
+                unlockAchievement('Streak Master', 1);
+            }
+            
+            // Algorithm Expert achievement
+            if (problemsSolved >= 50) {
+                unlockAchievement('Algorithm Expert', 2);
+            }
+        }
+        
+        function unlockAchievement(name, index) {
+            const achievementCard = document.querySelectorAll('.achievement-card')[index];
+            if (achievementCard) {
+                achievementCard.classList.remove('locked');
+                achievementCard.classList.add('unlocked');
+                
+                // Update progress to 100%
+                const progressFill = achievementCard.querySelector('.progress-fill');
+                const progressText = achievementCard.querySelector('.achievement-progress span');
+                
+                if (progressFill) progressFill.style.width = '100%';
+                if (progressText) progressText.textContent = '1/1';
+            }
+        }
+        
+        function editProfile() {
+            // Populate form with current data
+            document.getElementById('editFirstName').value = userData.firstName || '';
+            document.getElementById('editLastName').value = userData.lastName || '';
+            document.getElementById('editUsername').value = userData.username || '';
+            document.getElementById('editBio').value = userData.bio || '';
+            
+            document.getElementById('editProfileModal').style.display = 'block';
+        }
+        
+        function closeEditModal() {
+            document.getElementById('editProfileModal').style.display = 'none';
+        }
+        
+        function shareProfile() {
+            const profileUrl = window.location.href;
+            const shareText = `Check out my CodeMaster Pro profile: ${profileUrl}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My CodeMaster Pro Profile',
+                    text: shareText,
+                    url: profileUrl
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(shareText).then(() => {
+                    showNotification('Profile link copied to clipboard!', 'success');
+                });
+            }
+        }
+        
+        // Handle form submission
+        document.getElementById('editProfileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const updatedData = {
+                ...userData,
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                username: formData.get('username'),
+                bio: formData.get('bio'),
+                name: `${formData.get('firstName')} ${formData.get('lastName')}`
+            };
+            
+            localStorage.setItem('userData', JSON.stringify(updatedData));
+            updateProfile();
+            closeEditModal();
+            showNotification('Profile updated successfully!', 'success');
+        });
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            switch(type) {
+                case 'success':
+                    notification.style.background = '#00ff88';
+                    break;
+                case 'error':
+                    notification.style.background = '#ff5252';
+                    break;
+                default:
+                    notification.style.background = '#29b6f6';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

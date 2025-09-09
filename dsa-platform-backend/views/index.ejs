@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMaster Pro - Ultimate DSA Platform</title>
+    <link rel="stylesheet" href="/stylesheets/style.css?v=2.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster Pro</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#problems" class="nav-link">Problems</a>
+                <a href="#contests" class="nav-link">Contests</a>
+                <a href="#learn" class="nav-link">Learn</a>
+                <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                <a href="#discuss" class="nav-link">Discuss</a>
+                <a href="#profile" class="nav-link">Profile</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="20" fill="url(#gradient)"/>
+                            <circle cx="20" cy="16" r="6" fill="white"/>
+                            <path d="M8 32c0-6.627 5.373-12 12-12s12 5.373 12 12" fill="white"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00ff88"/>
+                                    <stop offset="100%" style="stop-color:#00cc6a"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="url(#gradient2)"/>
+                                    <circle cx="16" cy="13" r="5" fill="white"/>
+                                    <path d="M6 26c0-5.523 4.477-10 10-10s10 4.477 10 10" fill="white"/>
+                                    <defs>
+                                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#00ff88"/>
+                                            <stop offset="100%" style="stop-color:#00cc6a"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="name">Demo User</div>
+                                <div class="email">demo@example.com</div>
+                            </div>
+                        </div>
+                        <a href="/dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="/profile">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                        <a href="/settings">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <button onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Master DSA Like a Code Warrior</h1>
+            <p>The ultimate platform combining the best of LeetCode, CodeChef, HackerEarth, and ByteXL. Practice, compete, and conquer algorithms!</p>
+            
+            <div class="hero-actions">
+                <a href="/signin" class="btn btn-primary">
+                    <i class="fas fa-play"></i>
+                    Start Practicing
+                </a>
+                <a href="/dashboard" class="btn btn-secondary">
+                    <i class="fas fa-trophy"></i>
+                    Join Contest
+                </a>
+            </div>
+            
+            <div class="hero-code">
+                <pre><code>function solve() {
+    // Your solution here
+    return "Success!";
+}</code></pre>
+            </div>
+            
+            <div class="hero-categories">
+                <span class="hero-category">Binary Search</span>
+                <span class="hero-category">Tree</span>
+                <span class="hero-category">Dynamic Programming</span>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-card" style="--delay: 0s">
+                <i class="fas fa-code"></i>
+                <span>500+ Problems</span>
+            </div>
+            <div class="floating-card" style="--delay: 1s">
+                <i class="fas fa-users"></i>
+                <span>10K+ Coders</span>
+            </div>
+            <div class="floating-card" style="--delay: 2s">
+                <i class="fas fa-star"></i>
+                <span>4.9 Rating</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Problems</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Contests</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose CodeMaster Pro? -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose CodeMaster Pro?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>LeetCode Style</h3>
+                    <p>Premium problem quality with detailed solutions and discussions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>ByteXL Speed</h3>
+                    <p>Lightning-fast execution and real-time feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>CodeChef Contests</h3>
+                    <p>Regular coding competitions with global rankings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>HackerEarth Reach</h3>
+                    <p>Connect with companies and get hired.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Every DSA Topic -->
+    <section class="categories">
+        <div class="container">
+            <h2>Master Every DSA Topic</h2>
+            <div class="categories-grid">
+                <div class="category-card" data-category="arrays">
+                    <div class="category-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h3>Arrays & Strings</h3>
+                    <p>150 Problems</p>
+                    <div class="category-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Start Learning</button>
+                </div>
+                <div class="category-card" data-category="linkedlists">
+                    <div class="category-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Linked Lists</h3>
+                    <p>80 Problems</p>
+                    <div class="category-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>40%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Start Learning</button>
+                </div>
+                <div class="category-card" data-category="trees">
+                    <div class="category-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Trees & Graphs</h3>
+                    <p>120 Problems</p>
+                    <div class="category-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>20%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Start Learning</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Contests -->
+    <section class="contests">
+        <div class="container">
+            <h2>Live Contests</h2>
+            <div class="contests-grid">
+                <div class="contest-card live">
+                    <div class="contest-header">
+                        <div>
+                            <h3 class="contest-title">Weekly DSA Challenge</h3>
+                            <span class="contest-status live">Live</span>
+                        </div>
+                    </div>
+                    <div class="contest-info">
+                        <span><i class="fas fa-clock"></i> 2h 15m left</span>
+                        <span><i class="fas fa-users"></i> 1,247 participants</span>
+                        <span><i class="fas fa-trophy"></i> 500 points</span>
+                    </div>
+                    <div class="contest-actions">
+                        <button class="btn btn-primary">Join Now</button>
+                        <button class="btn btn-secondary">View Details</button>
+                    </div>
+                </div>
+                <div class="contest-card">
+                    <div class="contest-header">
+                        <div>
+                            <h3 class="contest-title">Algorithm Master</h3>
+                            <span class="contest-status upcoming">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="contest-info">
+                        <span><i class="fas fa-calendar"></i> Starts in 3h</span>
+                        <span><i class="fas fa-users"></i> 892 registered</span>
+                        <span><i class="fas fa-trophy"></i> 750 points</span>
+                    </div>
+                    <div class="contest-actions">
+                        <button class="btn btn-primary">Register</button>
+                        <button class="btn btn-secondary">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Path -->
+    <section class="learning-path">
+        <div class="container">
+            <h2>Your Learning Journey</h2>
+            <div class="path-steps">
+                <div class="path-step">
+                    <div class="path-number">1</div>
+                    <div class="path-content">
+                        <h3>Start with Basics</h3>
+                        <p>Begin with fundamental concepts like arrays, strings, and basic algorithms.</p>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="path-number">2</div>
+                    <div class="path-content">
+                        <h3>Master Data Structures</h3>
+                        <p>Learn linked lists, trees, graphs, and advanced data structures.</p>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="path-number">3</div>
+                    <div class="path-content">
+                        <h3>Conquer Algorithms</h3>
+                        <p>Tackle dynamic programming, greedy algorithms, and complex problem-solving.</p>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="path-number">4</div>
+                    <div class="path-content">
+                        <h3>Compete & Excel</h3>
+                        <p>Participate in contests, climb leaderboards, and become a coding champion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Preview -->
+    <section class="leaderboard-preview">
+        <div class="container">
+            <h2>Top Performers</h2>
+            <div class="leaderboard-table">
+                <div class="leaderboard-header">Global Rankings</div>
+                <div class="leaderboard-row">
+                    <div class="rank gold">1</div>
+                    <div class="user-info">
+                        <div class="user-avatar-small"></div>
+                        <div class="user-details">
+                            <div class="user-name">Alex Chen</div>
+                            <div class="user-title">Master Coder</div>
+                        </div>
+                    </div>
+                    <div class="user-score">2,450</div>
+                </div>
+                <div class="leaderboard-row">
+                    <div class="rank silver">2</div>
+                    <div class="user-info">
+                        <div class="user-avatar-small"></div>
+                        <div class="user-details">
+                            <div class="user-name">Sarah Kim</div>
+                            <div class="user-title">Algorithm Expert</div>
+                        </div>
+                    </div>
+                    <div class="user-score">2,180</div>
+                </div>
+                <div class="leaderboard-row">
+                    <div class="rank bronze">3</div>
+                    <div class="user-info">
+                        <div class="user-avatar-small"></div>
+                        <div class="user-details">
+                            <div class="user-name">Mike Johnson</div>
+                            <div class="user-title">Problem Solver</div>
+                        </div>
+                    </div>
+                    <div class="user-score">1,950</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Coding Journey?</h2>
+                <p>Join thousands of developers who are already mastering DSA on CodeMaster Pro</p>
+                <div class="cta-actions">
+                    <a href="/signup" class="btn btn-primary">Get Started Free</a>
+                    <a href="/signin" class="btn btn-secondary">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CodeMaster Pro</h3>
+                    <p>The ultimate DSA learning platform combining the best features from top coding websites.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platforms</h4>
+                    <ul>
+                        <li>LeetCode Style Problems</li>
+                        <li>CodeChef Contests</li>
+                        <li>HackerEarth Jobs</li>
+                        <li>ByteXL Speed</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li>Problem Sets</li>
+                        <li>Video Tutorials</li>
+                        <li>Discussion Forum</li>
+                        <li>Interview Prep</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CodeMaster Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/javascripts/main.js"></script>
+  </body>
+</html>

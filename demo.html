@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMaster Pro - Demo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Demo Styles - Same as the main platform */
+        :root {
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #667eea;
+            --accent: #ff6b6b;
+            --success: #00ff88;
+            --warning: #ffa726;
+            --danger: #ff5252;
+            --info: #29b6f6;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --gradient-primary: linear-gradient(135deg, #00ff88, #00cc6a);
+            --gradient-secondary: linear-gradient(135deg, #667eea, #764ba2);
+            --gradient-accent: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            --gradient-hero: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 30px rgba(0, 255, 136, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .nav-logo i {
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .skill-level-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-skill-level {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .btn-skill-level:hover {
+            background: var(--primary);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-skill-level.active {
+            background: var(--primary);
+            color: var(--bg-primary);
+        }
+
+        /* Skill Level Modal Styles */
+        .skill-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            border: 1px solid var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .skill-options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .skill-option {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .skill-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .skill-option h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-option p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .skill-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--bg-tertiary);
+        }
+
+        .skill-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-details li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-details li i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .confirm-btn {
+            background: var(--gradient-primary);
+            color: var(--bg-primary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--bg-primary);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .floating-elements {
+            position: relative;
+            height: 500px;
+        }
+
+        .code-block, .algorithm-card, .data-structure {
+            position: absolute;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .code-block {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .algorithm-card {
+            top: 40%;
+            right: 20%;
+            animation-delay: 2s;
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .data-structure {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--bg-primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .demo-info {
+            background: var(--bg-tertiary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 2rem 0;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .demo-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .demo-info ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+        }
+
+        .demo-info li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster Pro</span>
+            </div>
+            <div class="nav-actions">
+                <span style="color: var(--text-secondary);">Demo Mode</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Master DSA Like a 
+                    <span class="gradient-text">Code Warrior</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The ultimate platform combining the best of LeetCode, CodeChef, HackerEarth, and ByteXL. 
+                    Practice, compete, and conquer algorithms!
+                </p>
+                <div class="skill-level-container">
+                    <button class="btn-skill-level" data-level="beginner">Beginner</button>
+                    <button class="btn-skill-level" data-level="intermediate">Intermediate</button>
+                    <button class="btn-skill-level" data-level="pro">Pro</button>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn-primary">
+                        <i class="fas fa-play"></i>
+                        Start Practicing
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-trophy"></i>
+                        Join Contest
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="code-block">function solve() {<br>&nbsp;&nbsp;return "Success!";<br>}</div>
+                    <div class="algorithm-card">Binary Search</div>
+                    <div class="data-structure">Tree</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose CodeMaster Pro?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>LeetCode Style</h3>
+                    <p>Premium problem quality with detailed solutions and discussions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>ByteXL Speed</h3>
+                    <p>Lightning-fast execution and real-time feedback</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>CodeChef Contests</h3>
+                    <p>Regular coding competitions with global rankings</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>HackerEarth Reach</h3>
+                    <p>Connect with companies and get hired</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Info -->
+    <section style="padding: 4rem 0; background: var(--bg-primary);">
+        <div class="container">
+            <div class="demo-info">
+                <h3>🚀 What You're Seeing:</h3>
+                <ul>
+                    <li><strong>LeetCode Style:</strong> Clean problem interface, detailed solutions, discussion forums</li>
+                    <li><strong>CodeChef Contests:</strong> Live competitions, leaderboards, rating system</li>
+                    <li><strong>HackerEarth Jobs:</strong> Company connections, hiring challenges, skill assessments</li>
+                    <li><strong>ByteXL Speed:</strong> Fast execution, real-time feedback, performance analytics</li>
+                    <li><strong>Modern UI:</strong> Glassmorphism design, smooth animations, responsive layout</li>
+                    <li><strong>Interactive Elements:</strong> Hover effects, progress bars, floating animations</li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem; color: var(--accent);">🎯 Next Steps:</h3>
+                <ul>
+                    <li>Implement user authentication with JWT + bcrypt</li>
+                    <li>Add MongoDB database with problem models</li>
+                    <li>Create code editor with syntax highlighting</li>
+                    <li>Build contest management system</li>
+                    <li>Add real-time leaderboards</li>
+                    <li>Implement discussion forums</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Demo JavaScript
+        console.log('🚀 CodeMaster Pro Demo Loaded!');
+        console.log('🎯 This is the BEAST MODE hybrid platform!');
+        
+        // Add some interactive demo effects
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05) rotate(2deg)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-10px)';
+                }, 200);
+            });
+        });
+        
+        // Floating elements parallax effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const floatingElements = document.querySelectorAll('.floating-elements > div');
+            
+            floatingElements.forEach((element, index) => {
+                const rate = scrolled * -0.5;
+                element.style.transform = `translateY(${rate + (index * 10)}px)`;
+            });
+        });
+
+        // Handle skill level selection
+        const skillButtons = document.querySelectorAll('.btn-skill-level');
+        
+        skillButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                try {
+                    // Remove active class from all buttons
+                    skillButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get selected level
+                    const level = button.getAttribute('data-level');
+                    
+                    // Send the selected level to the backend
+                    const response = await fetch('/update-skill-level', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            skillLevel: level,
+                            userId: localStorage.getItem('userId') // If user is logged in
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to update skill level');
+                    }
+
+                    // Store the selected level locally
+                    localStorage.setItem('selectedLevel', level);
+                    
+                    // Fetch problems based on the selected level
+                    const problemsResponse = await fetch(`/problems?level=${level}`);
+                    if (!problemsResponse.ok) {
+                        throw new Error('Failed to fetch problems');
+                    }
+
+                    const problems = await problemsResponse.json();
+                    console.log('Problems for level:', level, problems);
+                    
+                    // You can update the UI with the fetched problems here
+                    // For example, update a problem list section
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Show error message to user
+                    alert('Failed to update skill level. Please try again.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
